@@ -13,7 +13,8 @@ async function main(){
                 role: 'system',
                 content: `You are a smart personal assistant who answers the asked question.
                 You have access to following tools:
-                1. searchWeb({query}: {query: string}) //Search the latest information and realtime data on the internet.`,
+                1. searchWeb({query}: {query: string}) //Search the latest information and realtime data on the internet.
+                current datetime: ${new Date().toUTCString()}`,
             },
             // {
             //     role:'user',
@@ -92,6 +93,7 @@ async function main(){
 
 }
  }
+ rl.close();
 }
 await main();
 
