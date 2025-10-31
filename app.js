@@ -49,7 +49,14 @@ async function main(){
     }
 
     for (const tool of toolCalls){
-        console.log('tool: ',tool)
+        console.log('tool: ',tool);
+        const functionName = tool.function.name;
+        const functionParams = tool.function.arguments;
+
+        if(functionName==='webSearch'){
+            const toolResult=await webSearch(JSON.parse(functionParams))
+            console.log("Tool result: ", toolResult)
+        }
     }
 
 
@@ -59,6 +66,6 @@ await main();
 
 async function webSearch({query}){
     // here we will do tavily api call
-
+    // console.log('Calling web search...')
     return "Iphone was launched on 20 september 2024.";
 }
