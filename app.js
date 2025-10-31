@@ -21,3 +21,7 @@ async function main(){
     console.log(completions.choices[0].message);
 }
 await main();
+
+async function webSearch({query}){
+    // here we will do 
+}
