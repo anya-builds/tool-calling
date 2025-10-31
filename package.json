@@ -7,20 +7,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anya-builds/tool-calling.git"
-  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
-  
-  "bugs": {
-    "url": "https://github.com/anya-builds/tool-calling/issues"
-  },
-  "homepage": "https://github.com/anya-builds/tool-calling#readme",
+
+
   "dependencies": {
-    "express": "^5.1.0",
     "groq-sdk": "^0.34.0"
   }
 }

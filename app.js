@@ -13,9 +13,11 @@ async function main(){
             },
             {
                 role:'user',
-                content: 'When was iphone 16 launched?',
+                content: 'What is the current weather in mumbai?',
+                // When was iphone 16 launched?
             },
         ],
     });
     console.log(completions.choices[0].message);
 }
+await main();
