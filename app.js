@@ -54,11 +54,11 @@ async function main(){
     if(!toolCalls){
         console.log(`Assistant: ${completions.choices[0].message.content}`)
 
-        return;
+        break;
     }
 
     for (const tool of toolCalls){
-        console.log('tool: ',tool);
+        // console.log('tool: ',tool);
         const functionName = tool.function.name;
         const functionParams = tool.function.arguments;
 
@@ -87,7 +87,7 @@ async function webSearch({query}){
     // here we will do tavily api call
     console.log('Calling web search...')
     const response = await tvly.search(query);
-    console.log('Response: ', response)
+    // console.log('Response: ', response)
 
     const finalResult = response.results.map((result)=> result.content).join('\n\n');
     
