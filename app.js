@@ -15,7 +15,7 @@ async function main(){
             },
             {
                 role:'user',
-                content: 'When was iphone 16 launched?',
+                content: 'what is the current weather in mumbai?',
                 // When was iphone 16 launched?
             },
         ]
