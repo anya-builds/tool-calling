@@ -1,3 +1,4 @@
+import readline from "node:readline/promises"
 import Groq from "groq-sdk";
 import { tavily } from "@tavily/core";
 
@@ -6,6 +7,7 @@ const groq = new Groq({apiKey: process.env.GROQ_API_KEY});
 
 async function main(){
 
+    const rl = readline.createInterface({input: process.stdin, output:process.stdout})
     const messages =[
             {
                 role: 'system',
@@ -13,14 +15,26 @@ async function main(){
                 You have access to following tools:
                 1. searchWeb({query}: {query: string}) //Search the latest information and realtime data on the internet.`,
             },
-            {
-                role:'user',
-                content: 'what is the current weather in mumbai?',
-                // When was iphone 16 launched?
-            },
+            // {
+            //     role:'user',
+            //     content: 'what is the current weather in mumbai?',
+            //     // When was iphone 16 launched?
+            // },
         ]
 
-       while(true){
+ while(true){
+        const question = await rl.question('You: ');
+
+        //bye
+        if(question==='bye'){
+            break;
+        }
+        messages.push({
+            role: 'user',
+            content: question,
+        })
+
+           while(true){
         const completions = await groq.chat.completions.create({
         model: 'llama-3.3-70b-versatile',
         temperature:0,
@@ -77,9 +91,7 @@ async function main(){
     }
 
 }
-        
-
-
+ }
 }
 await main();
 
