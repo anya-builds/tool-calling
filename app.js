@@ -1,5 +1,7 @@
 import Groq from "groq-sdk";
+import { tavily } from "@tavily/core";
 
+const tvly = tavily({ apiKey: process.env.TAVILY_API_KEY});
 const groq = new Groq({apiKey: process.env.GROQ_API_KEY});
 
 async function main(){
@@ -66,6 +68,8 @@ await main();
 
 async function webSearch({query}){
     // here we will do tavily api call
-    // console.log('Calling web search...')
+    console.log('Calling web search...')
+    const response = await tvly.search(query);
+    console.log('Response: ', response)
     return "Iphone was launched on 20 september 2024.";
 }

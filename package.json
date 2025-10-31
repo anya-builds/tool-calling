@@ -7,13 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
-
-
   "dependencies": {
+    "@tavily/core": "^0.5.12",
     "groq-sdk": "^0.34.0"
   }
 }
