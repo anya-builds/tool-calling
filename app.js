@@ -9,11 +9,13 @@ async function main(){
         messages:[
             {
                 role: 'system',
-                content: `You are a smart personal assistant who answers the asked question.`,
+                content: `You are a smart personal assistant who answers the asked question.
+                You have access to following tools:
+                1. searchWeb({query}: {query: string}) //Search the latest information and realtime data on the internet.`,
             },
             {
                 role:'user',
-                content: 'What is the current weather in mumbai?',
+                content: 'When was iphone 16 launched?',
                 // When was iphone 16 launched?
             },
         ],
@@ -21,25 +23,22 @@ async function main(){
     {
       "type": "function",
       "function": {
-        "name": "get_current_weather",
-        "description": "Get the current weather in a given location",
+        "name": "webSearch",
+        "description": "Search the latest information and real time data on internet.",
         "parameters": {
           "type": "object",
           "properties": {
-            "location": {
+            "query": {
               "type": "string",
-              "description": "The city and state, e.g. San Francisco, CA"
+              "description": "The search query to perform search on."
             },
-            "unit": {
-              "type": "string",
-              "enum": ["celsius", "fahrenheit"]
-            }
           },
-          "required": ["location"]
+          "required": ["query"]
         }
       }
     }
   ],
+    tool_choice:'auto',
     });
     console.log(completions.choices[0].message);
 }
